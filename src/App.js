@@ -34,12 +34,22 @@ class App extends Component {
     })
   }
   saveEdit = (id, body) => {
-    
+    let {name, description, price, image} = body
+    axios.put(`/api/product/${id}`, {name, description, price, image})
+    .then((res) => {
+      this.setState({products: res.data})
+    })
   };
 
   deleteItem = (id) => {
-
+    axios.delete(`/api/product/${id}`)
+    .then((res) => {
+      this.setState({
+        products: res.data
+      })
+    })
   }
+
   render() {
     console.log(this.state);
     let productList = this.state.products.map(product => {

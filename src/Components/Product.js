@@ -22,9 +22,7 @@ export default class Product extends Component {
     });
   };
   saveEdit = () => {
-    const { name, description, price, image } = this.state;
-    const {id} = this.props
-    this.props.saveEdit(id, {name, description, price, image});
+    this.props.saveEdit(this.props.id, {name: this.state.name, description: this.state.description, price: this.state.price, image: this.state.image})
     this.editToggle();
   };
   render() {
@@ -50,7 +48,7 @@ export default class Product extends Component {
               <p>{this.props.description}</p>
               <p>${this.props.price}</p>
               <button onClick={this.editToggle}>Edit</button>
-              <button>Delete</button>
+              <button onClick={this.props.deleteItem}>Delete</button>
             </>
           )}
         </div>

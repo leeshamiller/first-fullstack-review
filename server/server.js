@@ -10,6 +10,8 @@ app.use(express.json())
 
 app.get('/api/products', pc.getAll)
 app.post('/api/product', pc.createItem)
+app.put('/api/product/:id', pc.updateItem)
+app.delete('/api/product/:id', pc.deleteItem)
 
 massive(CONNECTION_STRING).then(connection => {
     app.set('db', connection)
